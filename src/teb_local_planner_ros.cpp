@@ -323,7 +323,7 @@ uint32_t TebLocalPlannerROS::computeVelocityCommands(const geometry_msgs::PoseSt
     tf2::Quaternion q;
     q.setRPY(0, 0, robot_goal_.theta());
     tf2::convert(q, transformed_plan.back().pose.orientation);
-  }  
+  } 
   else
   {
     robot_goal_.theta() = tf2::getYaw(transformed_plan.back().pose.orientation);
@@ -843,6 +843,10 @@ double TebLocalPlannerROS::estimateLocalGoalOrientation(const std::vector<geomet
       // TODO(roesmann): avoid conversion to tf2::Quaternion
       return tf2::getYaw(rotation *  global_orientation);
     }     
+  }
+
+  if (cfg_.trajectory.global_plan_overwrite_with_robot_orientation) {
+    return robot_pose_.theta();
   }
   
   // reduce number of poses taken into account if the desired number of poses is not available
