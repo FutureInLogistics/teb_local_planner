@@ -73,6 +73,7 @@ void TebConfig::loadRosParamFromNodeHandle(const ros::NodeHandle& nh)
   // Robot
   nh.param("max_vel_x", robot.max_vel_x, robot.max_vel_x);
   nh.param("max_vel_x_backwards", robot.max_vel_x_backwards, robot.max_vel_x_backwards);
+  nh.param("min_vel_trans", robot.min_vel_trans, robot.min_vel_trans);
   nh.param("max_vel_y", robot.max_vel_y, robot.max_vel_y);
   nh.param("max_vel_theta", robot.max_vel_theta, robot.max_vel_theta);
   nh.param("acc_lim_x", robot.acc_lim_x, robot.acc_lim_x);
@@ -203,6 +204,7 @@ void TebConfig::reconfigure(TebLocalPlannerReconfigureConfig& cfg)
   // Robot     
   robot.max_vel_x = cfg.max_vel_x;
   robot.max_vel_x_backwards = cfg.max_vel_x_backwards;
+  robot.min_vel_trans = cfg.min_vel_trans;
   robot.max_vel_y = cfg.max_vel_y;
   robot.max_vel_theta = cfg.max_vel_theta;
   robot.acc_lim_x = cfg.acc_lim_x;

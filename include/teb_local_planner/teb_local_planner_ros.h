@@ -353,9 +353,10 @@ protected:
    * @param max_vel_y Maximum strafing velocity (for holonomic robots)
    * @param max_vel_theta Maximum (absolute) angular velocity
    * @param max_vel_x_backwards Maximum translational velocity for backwards driving
+   * @param min_vel_trans Minimum translational velocity for driving
    */
   void saturateVelocity(double& vx, double& vy, double& omega, double max_vel_x, double max_vel_y,
-                        double max_vel_theta, double max_vel_x_backwards) const;
+                        double max_vel_theta, double max_vel_x_backwards, double min_vel_trans) const;
 
   
   /**
